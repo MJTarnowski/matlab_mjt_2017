@@ -254,35 +254,3 @@ title('y=sin(x)')
 
 % To plot two data sets y1 and y2 against x on the same
 % diagram use the method shown below.
-x=[1 2 3 4 5 6];
-y1=[1 4 9 16 25 36];
-y2=[6 5 4 3 2 1];
-plot(x,y1,x,y2)
-xlabel('x')
-ylabel('y')
-legend('y1','y2')
-
-% The text size on the axes and other figure properties
-% can easily be altered by using the plot tools, the far
-% right button on the figure window
-
-%% 16 Input of Parameters in Matlab using GUIs
-
-% The following Matlab code demonstrates how to
-% launch a Graphical User Interface (GUI) that allows
-% the user to enter some of the parameters used in the
-% code. The GUI launched has title “Input Parameters”,
-% asks the user for values of “Mass” and “Acceleration”,
-% gives default values “1” and “2” for these
-% parameters, and then uses Newton’s second law to
-% calculate the force.
-
-prompstr={'Mass','Acceleration'};
-inistr={'1','2'};
-titlestr='Input Parameters';
-nlines=1;
-result=inputdlg(prompstr,titlestr,...
-nlines,inistr);
-mass=eval([result{1}]);
-acceleration=eval([result{2}]);
-force=mass*acceleration
