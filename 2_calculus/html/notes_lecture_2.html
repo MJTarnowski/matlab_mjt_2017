@@ -1,0 +1,273 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>notes_lecture_2</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-14"><meta name="DC.source" content="notes_lecture_2.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">introduction to MATLAB notes</a></li><li><a href="#2">summary</a></li><li><a href="#3">lecture notes</a></li><li><a href="#4">worked example of bisection method in matlab</a></li><li><a href="#5">notes</a></li><li><a href="#6">questions</a></li></ul></div><h2 id="1">introduction to MATLAB notes</h2><pre class="codeinput"><span class="comment">% Matthew Tarnowski</span>
+<span class="comment">% 14th November 2017</span>
+<span class="comment">% synthetic biology</span>
+<span class="comment">% day 2 of DTC MATLAB module</span>
+<span class="comment">% read on for notes and exercises</span>
+</pre><h2 id="2">summary</h2><pre class="codeinput"><span class="comment">%roots</span>
+<span class="comment">%numerical differentiation</span>
+<span class="comment">%numerical integration</span>
+</pre><h2 id="3">lecture notes</h2><pre class="codeinput">y = x^2
+
+roots(y)
+<span class="comment">%fzero,fsolve is similar to fzero but it takes a vector vvalued function</span>
+<span class="comment">%for systems of equations rather than single equations</span>
+<span class="comment">% fourier series decomposes your function f(x) in to series fo cos and sin</span>
+<span class="comment">% functions</span>
+
+<span class="comment">% taylor expansion is an approximation of your function around a given point</span>
+<span class="comment">% eg at a given point, xi, you will look at x and y at x+1 and x-1</span>
+<span class="comment">% if your at one end of the vector such that x-1 or x+1 is not given then</span>
+<span class="comment">% you can just use forward difference or backward difference to just use</span>
+<span class="comment">% the information that is available</span>
+
+<span class="comment">%diff</span>
+<span class="comment">%gradient</span>
+<span class="comment">%del2 - calculates the second gradient of your function in terms of x plus</span>
+<span class="comment">%the second gradient of your function in terms of y</span>
+
+<span class="comment">%syms is symbolic differentiation like you do it by hand on pen and paper</span>
+
+
+<span class="comment">%numerical integration - rectangle rule, trapezium rule, simpson's rule</span>
+<span class="comment">% the equations on his slide aren't fully correct so look them up online</span>
+
+<span class="comment">% sum returns sum of entrie of a vector</span>
+<span class="comment">% trapz</span>
+<span class="comment">%quad(myfun,a,b)</span>
+</pre><pre class="codeoutput">
+y =
+
+   225
+
+
+ans =
+
+  0&times;1 empty double column vector
+
+</pre><h2 id="4">worked example of bisection method in matlab</h2><pre class="codeinput"><span class="comment">%first question in todays exercises</span>
+<span class="comment">%f(a) &lt; 0 and % f(b) &gt; 0</span>
+<span class="comment">% this means that the function must cross the x axis between 0 and 1</span>
+
+a = 0;
+b = 1;
+
+<span class="comment">%we will use an anonymous function (similar to lambda functions in python</span>
+<span class="comment">%or C++ or java)</span>
+<span class="comment">% an anonymous function makes things easier because that way you don't have</span>
+<span class="comment">% to create a whole nother file and you can just write it in line</span>
+f = @(x) 3*x + sin(x) - exp(x);
+
+<span class="comment">%use f(x,y) to write anon function with multiple variables</span>
+<span class="comment">% you can take a normal function and turn it in to an anonymous function by</span>
+<span class="comment">% doing stuff like f = @sin .. this turns sin in to an anon function.. some</span>
+<span class="comment">% functions in matlab require this</span>
+<span class="comment">%</span>
+
+
+<span class="comment">%no particular tolerance given</span>
+i = 0
+<span class="keyword">while</span> abs(b-a) &gt; 0.001
+    i = i+1;
+    c = (a + b) / 2;
+    <span class="keyword">if</span> f(c) &lt; 0
+        a = c;
+    <span class="keyword">elseif</span> f(c) &gt; 0
+        b = c;
+    <span class="keyword">else</span>
+        a = c;
+        b = c;
+    <span class="keyword">end</span>
+<span class="keyword">end</span>
+
+fprintf(<span class="string">'f(x) = 0 at x = %f. Took %d iterations'</span>,c,i)
+
+<span class="comment">%this q wants the root and asks you how many bisections are necessary</span>
+<span class="comment">% therefore you need to put in a loop counter</span>
+</pre><pre class="codeoutput">
+i =
+
+     0
+
+f(x) = 0 at x = 0.360352. Took 10 iterations</pre><h2 id="5">notes</h2><pre class="codeinput"><span class="comment">% eoin recommended using /etc/fstab to make a permanent mount of your sd</span>
+<span class="comment">% card in a certain place (eg /usr/home) which you can probably use to download matlab or</span>
+<span class="comment">% other programs in to</span>
+<span class="comment">% but he said not to save thesis or other important files on to it as SD</span>
+<span class="comment">% cards are not made for more than 1000x writes at each cell (bit); they</span>
+<span class="comment">% are more for storage</span>
+</pre><h2 id="6">questions</h2><pre class="codeinput"><span class="comment">% are there other matlab modules that I will need to download for the</span>
+<span class="comment">% course</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% introduction to MATLAB notes
+
+% Matthew Tarnowski
+% 14th November 2017
+% synthetic biology 
+% day 2 of DTC MATLAB module
+% read on for notes and exercises
+
+%% summary
+
+%roots
+%numerical differentiation
+%numerical integration
+
+%% lecture notes
+
+
+y = x^2
+
+roots(y)
+%fzero,fsolve is similar to fzero but it takes a vector vvalued function
+%for systems of equations rather than single equations
+% fourier series decomposes your function f(x) in to series fo cos and sin
+% functions
+
+% taylor expansion is an approximation of your function around a given point
+% eg at a given point, xi, you will look at x and y at x+1 and x-1
+% if your at one end of the vector such that x-1 or x+1 is not given then
+% you can just use forward difference or backward difference to just use
+% the information that is available
+
+%diff
+%gradient
+%del2 - calculates the second gradient of your function in terms of x plus
+%the second gradient of your function in terms of y
+
+%syms is symbolic differentiation like you do it by hand on pen and paper
+
+
+%numerical integration - rectangle rule, trapezium rule, simpson's rule
+% the equations on his slide aren't fully correct so look them up online
+
+% sum returns sum of entrie of a vector
+% trapz
+%quad(myfun,a,b)
+
+
+%% worked example of bisection method in matlab
+
+%first question in todays exercises
+%f(a) < 0 and % f(b) > 0
+% this means that the function must cross the x axis between 0 and 1
+
+a = 0;
+b = 1;
+
+%we will use an anonymous function (similar to lambda functions in python
+%or C++ or java)
+% an anonymous function makes things easier because that way you don't have
+% to create a whole nother file and you can just write it in line
+f = @(x) 3*x + sin(x) - exp(x);
+
+%use f(x,y) to write anon function with multiple variables
+% you can take a normal function and turn it in to an anonymous function by
+% doing stuff like f = @sin .. this turns sin in to an anon function.. some
+% functions in matlab require this
+%
+
+
+%no particular tolerance given
+i = 0
+while abs(b-a) > 0.001
+    i = i+1;
+    c = (a + b) / 2;
+    if f(c) < 0
+        a = c;
+    elseif f(c) > 0
+        b = c;
+    else
+        a = c;
+        b = c;
+    end
+end
+
+fprintf('f(x) = 0 at x = %f. Took %d iterations',c,i)
+
+%this q wants the root and asks you how many bisections are necessary
+% therefore you need to put in a loop counter
+%% notes
+
+% eoin recommended using /etc/fstab to make a permanent mount of your sd
+% card in a certain place (eg /usr/home) which you can probably use to download matlab or
+% other programs in to
+% but he said not to save thesis or other important files on to it as SD
+% cards are not made for more than 1000x writes at each cell (bit); they
+% are more for storage
+
+
+
+%% questions
+
+% are there other matlab modules that I will need to download for the
+% course
+##### SOURCE END #####
+--></body></html>

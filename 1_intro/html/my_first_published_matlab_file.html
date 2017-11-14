@@ -6,7 +6,7 @@
    <!--
 This HTML was auto-generated from MATLAB code.
 To make changes, update the MATLAB code and republish this document.
-      --><title>my first matlab file</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-13"><meta name="DC.source" content="my_first_published_matlab_file.m"><style type="text/css">
+      --><title>my_first_published_matlab_file</title><meta name="generator" content="MATLAB 9.3"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-13"><meta name="DC.source" content="my_first_published_matlab_file.m"><style type="text/css">
 html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
 
 html { min-height:100%; margin-bottom:1px; }
@@ -66,24 +66,370 @@ table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px soli
 
 
 
-  </style></head><body><div class="content"><h1>my first matlab file</h1><p>Q what is the difference between saving and publishing? A seems to be that publishing spits out a box of what the code in the file does whereas saving just saves the data in the file</p><pre class="codeinput"><span class="keyword">function</span> test
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">introduction to MATLAB notes</a></li><li><a href="#2">playing around - this is my first matlab file ever!</a></li><li><a href="#3">notes from introductory lecture</a></li><li><a href="#4">working through: an introduction to MATLAB worksheet sections 1-3</a></li><li><a href="#5">Section 4 - vectors (AKA arrays) and matrices</a></li><li><a href="#6">Addition, subtraction and multiplication of vectors and matrices</a></li><li><a href="#7">6 - generating vectors using ":"</a></li><li><a href="#8">7 - some special matrices and vectors</a></li><li><a href="#9">questions</a></li></ul></div><h2 id="1">introduction to MATLAB notes</h2><pre class="codeinput"><span class="comment">% Matthew Tarnowski</span>
+<span class="comment">% 13th November 2017</span>
+<span class="comment">% synthetic biology</span>
+<span class="comment">% DTC MATLAB module</span>
+<span class="comment">% day 1 of MATLAB module</span>
+<span class="comment">% read on for notes and exercises</span>
+</pre><h2 id="2">playing around - this is my first matlab file ever!</h2><p>Q what is the difference between saving and publishing? A seems to be that publishing spits out a box of what the code in the file does whereas saving just saves the data in the file</p><pre class="codeinput"><span class="comment">%BODMAS -</span>
+<span class="comment">%brackets</span>
+<span class="comment">%, orders (root/power),</span>
+<span class="comment">%division,</span>
+<span class="comment">%multiplication,</span>
+<span class="comment">%addition,</span>
+<span class="comment">%subtraction</span>
 
-disp(<span class="string">"hello"</span>)
+<span class="comment">%function test</span>
 
-<span class="keyword">end</span>
-</pre><pre class="codeoutput">hello
+<span class="comment">%disp("hello")</span>
+
+<span class="comment">%end</span>
+</pre><h2 id="3">notes from introductory lecture</h2><pre class="codeinput"><span class="comment">% %% this is how you add titles (with %%)</span>
+
+<span class="comment">% this is how you add notes/comments (with %)</span>
+
+<span class="comment">%this is how you add variable names:</span>
+<span class="comment">%_name_</span>
+
+<span class="comment">%add latex equations using:</span>
+<span class="comment">% $$ y = x $$</span>
+
+
+<span class="comment">% for more info on the publish operation:</span>
+<span class="comment">% https://uk.mathworks.com/help/matlab/ref/publish.html</span>
+
+
+<span class="comment">%latex (x^2 + 1/4)</span>
+</pre><h2 id="4">working through: an introduction to MATLAB worksheet sections 1-3</h2><pre class="codeinput"><span class="comment">%date - 20171114; day 1 of course</span>
+
+<span class="comment">% type an equation which doesn't end in a colon to make it output to the</span>
+<span class="comment">% screen:</span>
+x=3+4*(1+6/3)
+
+x
+
+<span class="comment">%or type a colon after the equation to ensure it doesn't get published:</span>
+x=3+4*(1+6/3)
+
+<span class="comment">%then you can print x to screen by simply typing the variable:</span>
+
+x
+</pre><pre class="codeoutput">
+x =
+
+    15
+
+
+x =
+
+    15
+
+
+x =
+
+    15
+
+
+x =
+
+    15
+
+</pre><h2 id="5">Section 4 - vectors (AKA arrays) and matrices</h2><pre class="codeinput"><span class="comment">% example: vector u = (1,4,9) may be entered in to matlab by the following</span>
+<span class="comment">% methods:</span>
+<span class="comment">% inputting all the elements simultaneously - this prints the vector</span>
+u = [1 4 9]
+
+<span class="comment">% mat lab is zero-indexed! :(</span>
+<span class="comment">%but you can enter the elements of the vector one by one</span>
+v(1) = 4;
+v(2) = 5;
+v(3) = 6;
+v
+
+<span class="comment">% the transpose of u may be written as u'</span>
+u'
+
+<span class="comment">%vectors with columns can be written by putting semicolons between the</span>
+<span class="comment">%vector elements:</span>
+v=[4; 5; 6]
+
+<span class="comment">% inside the square brackets, the semicolon denotes a new line</span>
+
+<span class="comment">% matrices</span>
+
+<span class="comment">% *matrices*</span>
+A(1,1)=1;
+A(1,2)=2;
+A(2,1)=3;
+A(2,2)=4
+
+<span class="comment">%hmm maybe 1-indexing isn't so bad..</span>
+<span class="comment">% A(i,j) corresponds to the element in the ith row and the jth column of</span>
+<span class="comment">% the matrix A</span>
+
+<span class="comment">% you can also type the same size matrix by entering elements in the same</span>
+<span class="comment">% row with just spaces between them and then entering new lines using ;</span>
+
+B = [3 2; 7 6]
+
+<span class="comment">%</span>
+<span class="comment">% *4.2 - changing individual elements of a matrix Can be done by specifying*</span>
+<span class="comment">% *the individual element* :</span>
+
+B(1,2) = 100
+
+<span class="comment">%An alternative way is to double click on &#8220;A&#8221; in the</span>
+<span class="comment">%Workspace window. This opens a window containing</span>
+<span class="comment">%the contents of the matrix A.</span>
+
+<span class="comment">%  *looking at parts of matrices*</span>
+C=[1 2 3 4; 5 6 7 8; 9 10 11 12];
+
+<span class="comment">% to view a certain column n type C(:,n) &amp; do similar for a given row</span>
+<span class="comment">% to view certain rows or columns specify a range m:n</span>
+</pre><pre class="codeoutput">
+u =
+
+     1     4     9
+
+
+v =
+
+     4
+     5
+     6
+
+
+ans =
+
+     1
+     4
+     9
+
+
+v =
+
+     4
+     5
+     6
+
+
+A =
+
+     1     2
+     3     4
+
+
+B =
+
+     3     2
+     7     6
+
+
+B =
+
+     3   100
+     7     6
+
+</pre><h2 id="6">Addition, subtraction and multiplication of vectors and matrices</h2><pre class="codeinput"><span class="comment">% _the matrices must be of the same size to be a/s/m_</span>
+<span class="comment">% as advised in the maths module, the number of columns of the first</span>
+<span class="comment">% matrix in the multiplication must equal the number of rows in the second</span>
+<span class="comment">% matrix to be multiplied</span>
+<span class="comment">% IE matrix A of dimensions 3 x 4 and matrix B dimensions 4 x 23 can be multiplied</span>
+<span class="comment">% _ (3 x 4) X (4 x 23) -&gt; (3 x 23) product matrix dimensions</span>
+</pre><h2 id="7">6 - generating vectors using ":"</h2><pre class="codeinput">M = 1:10
+
+<span class="comment">% A vector y consisting of 100 points equally</span>
+<span class="comment">%spaced between 5 and 15 may be generated by</span>
+<span class="comment">%typing:</span>
+y=linspace(5,15,100);
+</pre><pre class="codeoutput">
+M =
+
+     1     2     3     4     5     6     7     8     9    10
+
+</pre><h2 id="8">7 - some special matrices and vectors</h2><pre class="codeinput"><span class="comment">% zeros(m,n) creates a matrix of dimensions m,n</span>
+zeros(3,2)
+
+<span class="comment">% ones(m,n) does same thing but generates a matrix of ones</span>
+
+<span class="comment">% eye(m,n) creates diagonal entries equal to</span>
+<span class="comment">%1 and all other entries equal to 0</span>
+
+eye(4,6)
+</pre><pre class="codeoutput">
+ans =
+
+     0     0
+     0     0
+     0     0
+
+
+ans =
+
+     1     0     0     0     0     0
+     0     1     0     0     0     0
+     0     0     1     0     0     0
+     0     0     0     1     0     0
+
+</pre><h2 id="9">questions</h2><pre class="codeinput"><span class="comment">% - how to insert equations in the latex format</span>
 </pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2017b</a><br></p></div><!--
 ##### SOURCE BEGIN #####
-%% my first matlab file
+%% introduction to MATLAB notes
+
+% Matthew Tarnowski
+% 13th November 2017
+% synthetic biology 
+% DTC MATLAB module
+% day 1 of MATLAB module
+% read on for notes and exercises
+
+%% playing around - this is my first matlab file ever!
 % Q what is the difference between saving and publishing?
 % A seems to be that publishing spits out a box of what the code in
 % the file does whereas saving just saves the data in the file
 
+%BODMAS - 
+%brackets
+%, orders (root/power), 
+%division, 
+%multiplication,
+%addition, 
+%subtraction
 
-function test
+%function test
 
-disp("hello")
+%disp("hello")
 
-end
+%end
+
+
+%% notes from introductory lecture
+
+% %% this is how you add titles (with %%)
+
+% this is how you add notes/comments (with %)
+
+%this is how you add variable names:
+%_name_
+
+%add latex equations using:
+% $$ y = x $$
+
+
+% for more info on the publish operation: 
+% https://uk.mathworks.com/help/matlab/ref/publish.html
+
+
+%latex (x^2 + 1/4)
+
+
+%% working through: an introduction to MATLAB worksheet sections 1-3
+%date - 20171114; day 1 of course
+
+% type an equation which doesn't end in a colon to make it output to the
+% screen:
+x=3+4*(1+6/3)
+
+x
+
+%or type a colon after the equation to ensure it doesn't get published:
+x=3+4*(1+6/3)
+
+%then you can print x to screen by simply typing the variable:
+
+x
+
+
+%% Section 4 - vectors (AKA arrays) and matrices
+
+% example: vector u = (1,4,9) may be entered in to matlab by the following
+% methods:
+% inputting all the elements simultaneously - this prints the vector
+u = [1 4 9]
+
+% mat lab is zero-indexed! :(
+%but you can enter the elements of the vector one by one
+v(1) = 4;
+v(2) = 5;
+v(3) = 6;
+v
+
+% the transpose of u may be written as u'
+u'
+
+%vectors with columns can be written by putting semicolons between the
+%vector elements:
+v=[4; 5; 6]
+
+% inside the square brackets, the semicolon denotes a new line
+
+% matrices
+
+% *matrices*
+A(1,1)=1;
+A(1,2)=2;
+A(2,1)=3;
+A(2,2)=4
+
+%hmm maybe 1-indexing isn't so bad.. 
+% A(i,j) corresponds to the element in the ith row and the jth column of
+% the matrix A
+
+% you can also type the same size matrix by entering elements in the same
+% row with just spaces between them and then entering new lines using ;
+
+B = [3 2; 7 6]
+
+% 
+% *4.2 - changing individual elements of a matrix Can be done by specifying*
+% *the individual element* :
+
+B(1,2) = 100
+
+%An alternative way is to double click on “A” in the
+%Workspace window. This opens a window containing
+%the contents of the matrix A.
+
+%  *looking at parts of matrices*
+C=[1 2 3 4; 5 6 7 8; 9 10 11 12];
+
+% to view a certain column n type C(:,n) & do similar for a given row
+% to view certain rows or columns specify a range m:n
+
+%% Addition, subtraction and multiplication of vectors and matrices
+
+% _the matrices must be of the same size to be a/s/m_
+% as advised in the maths module, the number of columns of the first 
+% matrix in the multiplication must equal the number of rows in the second
+% matrix to be multiplied
+% IE matrix A of dimensions 3 x 4 and matrix B dimensions 4 x 23 can be multiplied
+% _ (3 x 4) X (4 x 23) -> (3 x 23) product matrix dimensions
+
+%% 6 - generating vectors using ":"
+
+M = 1:10
+
+% A vector y consisting of 100 points equally
+%spaced between 5 and 15 may be generated by
+%typing:
+y=linspace(5,15,100);
+
+%% 7 - some special matrices and vectors
+
+% zeros(m,n) creates a matrix of dimensions m,n
+zeros(3,2)
+
+% ones(m,n) does same thing but generates a matrix of ones
+
+% eye(m,n) creates diagonal entries equal to
+%1 and all other entries equal to 0 
+
+eye(4,6)
+%% questions
+
+% - how to insert equations in the latex format
+
 ##### SOURCE END #####
 --></body></html>
