@@ -81,12 +81,35 @@
 
 %2a - Use bvp4c in Matlab to solve the boundary value problem
 
-function odefun()
+% function bvp4
+% ylow=1;
+% yhigh=1;
+% solinit=bvpinit(linspace(xlow,xhigh,10),[1,-1]);
+% sol=bvp4c(@bvp4ode,@bvp4bc,solinit);
+% xint = linspace(xlow,xhigh,20);
+% Sxint = deval(sol,xint);
+% plot(xint,Sxint(1,:))
+% %
+% function dydt=bvp4ode(t,y)
+% dydt = zeros(2,1);
+% dydt(1)=y(2);
+% dydt(2)=-3*y(2)+4*y(1);
+% %
+% function res = bvp4bc(ya,yb)
+% res = [ya(1) yb(2)]
+
+
 sol = bvp4c(@deriv2a,@bcfun,solinit)
 
 function dydt=deriv2a(t,y)
 dydt = zeros(2,1);
 dydt(1)=y(2);
 dydt(2)=-3*y(2)+4*y(1);
+end
 
+function res=bcfun(ya,yb)
+res = zeros(2,1);
+res(1) = 1
+res(2) = 1
+end
 %TBC
