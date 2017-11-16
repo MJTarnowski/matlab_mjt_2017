@@ -98,18 +98,23 @@
 % function res = bvp4bc(ya,yb)
 % res = [ya(1) yb(2)]
 
+function solvebvp()
+
+bcfun = 
+
 
 sol = bvp4c(@deriv2a,@bcfun,solinit)
 
-function dydt=deriv2a(t,y)
-dydt = zeros(2,1);
-dydt(1)=y(2);
-dydt(2)=-3*y(2)+4*y(1);
-end
+    function dydt=deriv2a(t,y)
+    dydt = zeros(2,1);
+    dydt(1)=y(2);
+    dydt(2)=-3*y(2)+4*y(1);
+    end
 
-function res=bcfun(ya,yb)
-res = zeros(2,1);
-res(1) = 1
-res(2) = 1
+    function res=bcfun(ya,yb)
+    res = zeros(2,1);
+    res(1) = 1
+    res(2) = 1
+    end
 end
 %TBC
