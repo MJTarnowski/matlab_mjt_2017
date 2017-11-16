@@ -1,0 +1,407 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Q5</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-16"><meta name="DC.source" content="Q5.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">Q5 - sparse matrices</a></li><li><a href="#2">whos</a></li><li><a href="#3">more sparse matrices</a></li><li><a href="#4">5b -</a></li></ul></div><h2>Q5 - sparse matrices<a name="1"></a></h2><pre class="codeinput"><span class="comment">% matlab has sparse versions of most inbuilt functions which operate much</span>
+<span class="comment">% faster than their dense counterparts</span>
+
+A=diag(diag(2*ones(100)))+diag(ones(99,1),1)+diag(ones(99,1),-1);
+
+<span class="comment">%Number of nonzero matrix elements</span>
+nnz(A)
+<span class="comment">%Visualize sparsity pattern</span>
+<span class="comment">% plots the sparsity pattern of any matrix S.</span>
+spy(A)
+
+<span class="comment">%looking at a different pattern: the connectivity graph of buckminster</span>
+<span class="comment">%fuller geodesic dome/ football / c60 molecule</span>
+B = bucky;
+spy(B)
+
+Ainv=inv(A);
+spy(Ainv)
+
+<span class="comment">%to give an idea of what happens to the matrix, here is analysis of</span>
+<span class="comment">%Ainv(1:3,1:3)</span>
+E = [2 1 0; 1 2 1; 0 1 2]
+inv(E)
+
+Ainv(1:3,1:3)
+
+<span class="comment">%sparse creates a sparse matrix</span>
+B=sparse(A);
+spy(B)
+
+<span class="comment">% to demonstrate what is happening:</span>
+F=sparse(E);
+spy(F)
+
+<span class="comment">% spy(A-B) example for simpler example</span>
+<span class="comment">%spy(E-F)</span>
+<span class="comment">% no pattern is shown because F is the same as E, just a sparse format of</span>
+<span class="comment">% the matrix</span>
+</pre><pre class="codeoutput">
+ans =
+
+   298
+
+
+E =
+
+     2     1     0
+     1     2     1
+     0     1     2
+
+
+ans =
+
+    0.7500   -0.5000    0.2500
+   -0.5000    1.0000   -0.5000
+    0.2500   -0.5000    0.7500
+
+
+ans =
+
+    0.9901   -0.9802    0.9703
+   -0.9802    1.9604   -1.9406
+    0.9703   -1.9406    2.9109
+
+</pre><img vspace="5" hspace="5" src="Q5_01.png" alt=""> <h2>whos<a name="2"></a></h2><pre class="codeinput"><span class="comment">% this command shows that A uses 16 fold more space than B</span>
+<span class="comment">%A inv has lots of non-zero entities because the way that inversing a</span>
+<span class="comment">%matrix works means that the diagonal matrix is spread outwards through the</span>
+<span class="comment">%matrix once it has been inverted</span>
+
+
+
+<span class="comment">% Name        Size             Bytes  Class     Attributes</span>
+<span class="comment">%</span>
+<span class="comment">%   A         100x100            80000  double</span>
+
+<span class="comment">%   B         100x100             5576  double    sparse</span>
+</pre><h2>more sparse matrices<a name="3"></a></h2><pre class="codeinput"><span class="comment">% speye command - this is a sparse identitiy matrix</span>
+
+speye(5)
+
+<span class="comment">%Sparse uniformly distributed random matrix</span>
+<span class="comment">% sprand(m,n,d) gives mxn matrix with rand value density of 10%</span>
+C=sprand(10,10,0.1)
+spy(C)
+<span class="comment">% to find the random values:</span>
+[i,j,v] = find(C)
+<span class="comment">%to find the matrix locations where the values have been placed in the</span>
+<span class="comment">%matrix</span>
+[i,j]=find(C&gt;0.5)
+
+
+<span class="comment">% spdiags:  Extract and create sparse band and diagonal matrices</span>
+t = spdiags(ones(10,1),10,10)
+<span class="comment">% spdiags(A,d,m,n) where A is matrix and d is density and m and n are</span>
+<span class="comment">% matrix dimensions</span>
+s = spdiags(ones(10,1)*[-1,2,-1],[-1,0,1],10,10)
+spy(t)
+clear
+</pre><pre class="codeoutput">
+ans =
+
+   (1,1)        1
+   (2,2)        1
+   (3,3)        1
+   (4,4)        1
+   (5,5)        1
+
+
+C =
+
+   (2,3)       0.8109
+   (4,3)       0.4631
+   (6,3)       0.9722
+   (3,4)       0.8118
+   (3,6)       0.6706
+   (4,6)       0.4900
+   (5,7)       0.3320
+   (6,9)       0.3675
+   (7,9)       0.8321
+
+
+i =
+
+     2
+     4
+     6
+     3
+     3
+     4
+     5
+     6
+     7
+
+
+j =
+
+     3
+     3
+     3
+     4
+     6
+     6
+     7
+     9
+     9
+
+
+v =
+
+    0.8109
+    0.4631
+    0.9722
+    0.8118
+    0.6706
+    0.4900
+    0.3320
+    0.3675
+    0.8321
+
+
+i =
+
+     2
+     6
+     3
+     3
+     7
+
+
+j =
+
+     3
+     3
+     4
+     6
+     9
+
+
+t =
+
+   (1,1)       10
+
+
+s =
+
+   (1,1)        2
+   (2,1)       -1
+   (1,2)       -1
+   (2,2)        2
+   (3,2)       -1
+   (2,3)       -1
+   (3,3)        2
+   (4,3)       -1
+   (3,4)       -1
+   (4,4)        2
+   (5,4)       -1
+   (4,5)       -1
+   (5,5)        2
+   (6,5)       -1
+   (5,6)       -1
+   (6,6)        2
+   (7,6)       -1
+   (6,7)       -1
+   (7,7)        2
+   (8,7)       -1
+   (7,8)       -1
+   (8,8)        2
+   (9,8)       -1
+   (8,9)       -1
+   (9,9)        2
+  (10,9)       -1
+   (9,10)      -1
+  (10,10)       2
+
+</pre><img vspace="5" hspace="5" src="Q5_02.png" alt=""> <h2>5b -<a name="4"></a></h2><pre class="codeinput"><span class="comment">% eye gives square identity matrix</span>
+
+A=2*eye(500)-diag(ones(499,1),1)-diag(ones(499,1),-1);
+
+tic, A*A; toc
+B=spdiags(ones(500,1)*[-1,2,-1],[-1,0,1],500,500);
+tic, B*B; toc
+
+<span class="comment">% B is sparse so it is much quicker to perform matrix multiplication#</span>
+
+b=ones(500,1);
+
+tic,A\b; toc
+tic, B\b; toc
+
+<span class="comment">% it is much faster to do N\b for sparse matrices</span>
+</pre><pre class="codeoutput">Elapsed time is 0.001968 seconds.
+Elapsed time is 0.000183 seconds.
+Elapsed time is 0.002135 seconds.
+Elapsed time is 0.000096 seconds.
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Q5 - sparse matrices
+
+% matlab has sparse versions of most inbuilt functions which operate much
+% faster than their dense counterparts
+
+A=diag(diag(2*ones(100)))+diag(ones(99,1),1)+diag(ones(99,1),-1);
+
+%Number of nonzero matrix elements
+nnz(A)
+%Visualize sparsity pattern
+% plots the sparsity pattern of any matrix S.
+spy(A)
+
+%looking at a different pattern: the connectivity graph of buckminster
+%fuller geodesic dome/ football / c60 molecule
+B = bucky;
+spy(B)
+
+Ainv=inv(A);
+spy(Ainv)
+
+%to give an idea of what happens to the matrix, here is analysis of
+%Ainv(1:3,1:3)
+E = [2 1 0; 1 2 1; 0 1 2]
+inv(E)
+
+Ainv(1:3,1:3)
+
+%sparse creates a sparse matrix
+B=sparse(A);
+spy(B)
+
+% to demonstrate what is happening:
+F=sparse(E);
+spy(F)
+
+% spy(A-B) example for simpler example
+%spy(E-F)
+% no pattern is shown because F is the same as E, just a sparse format of
+% the matrix
+
+%% whos
+
+% this command shows that A uses 16 fold more space than B
+%A inv has lots of non-zero entities because the way that inversing a
+%matrix works means that the diagonal matrix is spread outwards through the
+%matrix once it has been inverted
+
+
+
+% Name        Size             Bytes  Class     Attributes
+% 
+%   A         100x100            80000  double              
+            
+%   B         100x100             5576  double    sparse    
+
+%% more sparse matrices
+
+% speye command - this is a sparse identitiy matrix
+
+speye(5)
+
+%Sparse uniformly distributed random matrix
+% sprand(m,n,d) gives mxn matrix with rand value density of 10%
+C=sprand(10,10,0.1)
+spy(C)
+% to find the random values:
+[i,j,v] = find(C)
+%to find the matrix locations where the values have been placed in the
+%matrix
+[i,j]=find(C>0.5)
+
+
+% spdiags:  Extract and create sparse band and diagonal matrices
+t = spdiags(ones(10,1),10,10)
+% spdiags(A,d,m,n) where A is matrix and d is density and m and n are
+% matrix dimensions
+s = spdiags(ones(10,1)*[-1,2,-1],[-1,0,1],10,10)
+spy(t)
+clear
+
+
+
+%% 5b - 
+
+% eye gives square identity matrix 
+
+A=2*eye(500)-diag(ones(499,1),1)-diag(ones(499,1),-1);
+
+tic, A*A; toc
+B=spdiags(ones(500,1)*[-1,2,-1],[-1,0,1],500,500);
+tic, B*B; toc
+
+% B is sparse so it is much quicker to perform matrix multiplication#
+
+b=ones(500,1);
+
+tic,A\b; toc
+tic, B\b; toc
+
+% it is much faster to do N\b for sparse matrices
+##### SOURCE END #####
+--></body></html>
