@@ -1,0 +1,498 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>q1 - EXPERIEMENT</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-16"><meta name="DC.source" content="Q1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>q1 - EXPERIEMENT</h1><pre class="codeinput"><span class="comment">% THIS ADDS A VECTOR AS SINGLE ROW,</span>
+<span class="comment">%COMMAS INDICATE DIFFERENT ROW ELEMENTS</span>
+x=[1,2,3]
+<span class="comment">% THIS ADDS A VECTOR AS A SINGLE ROW AND TRANSPOSES IT SO THAT IT IS IN THE</span>
+<span class="comment">% FORM OF A SINGLE COLUMN</span>
+y=[2,4,6]'
+<span class="comment">% THIS ADDS A VECTOR AS A SINGLE COLUMN</span>
+<span class="comment">% COLONS INDICATE THE END OF A COLUMN</span>
+z=[2;4;6]
+
+<span class="comment">% MULTIPLICATION OF VECTORS IS NOT COMMUTATIVE</span>
+<span class="comment">%(ORDER MATTERS)</span>
+<span class="comment">% THE RESULTING MATRIX HAS SAME ROWS AS FIRST MATRIX AND SAME NUMBER</span>
+<span class="comment">% COLUMNS AS SECOND MATRIX IN THE MULTIPLICATION</span>
+x*y
+y*x
+<span class="comment">% IF THE NUMBER OF COLUMNS OF FIRST MATRIX ARE NOT EQUAL TO NUMBER OF ROWS</span>
+<span class="comment">% OF SECOND MATRIX THEN THE MATRICES CANNOT BE MULTIPLIED</span>
+<span class="comment">% y*z</span>
+
+<span class="comment">% YOU CAN MULTIPLY MATRIX ELEMENTS BY ANOTHER MATRIX IF THEY ARE THE SAME</span>
+<span class="comment">% DIMENSIONS</span>
+<span class="comment">% x.*y</span>
+x'.*y
+<span class="comment">% x.*z</span>
+y.*z
+<span class="comment">% YOU CAN CALCULATE THE SUM OF ALL THE ELEMENTS OF A GIVEN MATRIX USING THE</span>
+<span class="comment">% SUM FUNCTION</span>
+sum(x)
+<span class="comment">% CALCULATE THE PRODUCT OF MATRIX ELEMENTS USING PROD()</span>
+prod(y)
+
+<span class="comment">% HERE IS A 3X3 MATRIX</span>
+A=[1,2,3;4,5,6;1,3,2]
+<span class="comment">% HERE IS ITS INVERSE</span>
+B = A'
+<span class="comment">% HERE IS IT MULTIPLIED BY Y :</span>
+<span class="comment">% 3 X 3 * (3 X 1) -&gt; 3 X 1</span>
+A*y
+<span class="comment">% A MATRIX MULTIPLIED BY ITS INVERSE</span>
+A*B
+
+<span class="comment">% THE DETERMINANT OF A MATRIX CAN BE CALCULATED</span>
+det(A)
+
+<span class="comment">% MATRICES CAN BE INVERTED</span>
+<span class="comment">% THIS IS MUCH SIMPLER USING A MATLAB COMMAND THAN BY HAND</span>
+
+inv(B)
+
+<span class="comment">% A MATRIX MULTIPLIED BY ITS INVERSE IS EQUAL TO THE IDENTITY MATRIX</span>
+<span class="comment">% THE IDENTITY MATRIX IS ESSENTIAL "1" BUT IN MATRIX FORM</span>
+B*inv(B)
+
+<span class="comment">% In linear algebra, the trace of an n-by-n</span>
+<span class="comment">%square matrix A is defined to be the sum of</span>
+<span class="comment">%the elements on the main diagonal</span>
+<span class="comment">%(the diagonal from the upper left to the lower right) of A</span>
+trace(A)
+
+<span class="comment">% A(i,j) gives the element in the ith row and the jth column</span>
+A
+A(1,2)
+<span class="comment">% using the colon gives all elements in a given row or column</span>
+A(:,2)
+<span class="comment">% more matrix slicing...</span>
+A(2,2:3)
+<span class="comment">% and re-ordering of matrix</span>
+A([2,1,3],:)
+
+<span class="comment">% A MULTIPLIED BY ITSELF</span>
+A^2
+
+<span class="comment">% EVERY ELEMENT IN A SQUARED INDIVIDUALLY</span>
+A
+A.^2
+
+<span class="comment">%SUM OF ELEMENTS IN INDIVIDUAL COLUMNS</span>
+A
+sum(A,1)
+<span class="comment">% AND IN INDIVIDUAL ROWS</span>
+sum(A,2)
+
+<span class="comment">% the same can be done for products</span>
+prod(A,1)
+prod(A,2)
+
+<span class="comment">%C is created from matrix A with an extra column added</span>
+C=[A,z]
+
+<span class="comment">% matrix of ones can be created</span>
+ones(5,1)
+<span class="comment">% or a square matrix</span>
+ones(5)
+
+<span class="comment">% matrix of zeros too</span>
+zeros(1,5)
+
+<span class="comment">%to clear all variables from workspace, use the clear command</span>
+
+
+clear
+</pre><pre class="codeoutput">
+x =
+
+     1     2     3
+
+
+y =
+
+     2
+     4
+     6
+
+
+z =
+
+     2
+     4
+     6
+
+
+ans =
+
+    28
+
+
+ans =
+
+     2     4     6
+     4     8    12
+     6    12    18
+
+
+ans =
+
+     2
+     8
+    18
+
+
+ans =
+
+     4
+    16
+    36
+
+
+ans =
+
+     6
+
+
+ans =
+
+    48
+
+
+A =
+
+     1     2     3
+     4     5     6
+     1     3     2
+
+
+B =
+
+     1     4     1
+     2     5     3
+     3     6     2
+
+
+ans =
+
+    28
+    64
+    26
+
+
+ans =
+
+    14    32    13
+    32    77    31
+    13    31    14
+
+
+ans =
+
+     9
+
+
+ans =
+
+   -0.8889   -0.2222    0.7778
+    0.5556   -0.1111   -0.1111
+   -0.3333    0.6667   -0.3333
+
+
+ans =
+
+    1.0000         0    0.0000
+   -0.0000    1.0000    0.0000
+   -0.0000         0    1.0000
+
+
+ans =
+
+     8
+
+
+A =
+
+     1     2     3
+     4     5     6
+     1     3     2
+
+
+ans =
+
+     2
+
+
+ans =
+
+     2
+     5
+     3
+
+
+ans =
+
+     5     6
+
+
+ans =
+
+     4     5     6
+     1     2     3
+     1     3     2
+
+
+ans =
+
+    12    21    21
+    30    51    54
+    15    23    25
+
+
+A =
+
+     1     2     3
+     4     5     6
+     1     3     2
+
+
+ans =
+
+     1     4     9
+    16    25    36
+     1     9     4
+
+
+A =
+
+     1     2     3
+     4     5     6
+     1     3     2
+
+
+ans =
+
+     6    10    11
+
+
+ans =
+
+     6
+    15
+     6
+
+
+ans =
+
+     4    30    36
+
+
+ans =
+
+     6
+   120
+     6
+
+
+C =
+
+     1     2     3     2
+     4     5     6     4
+     1     3     2     6
+
+
+ans =
+
+     1
+     1
+     1
+     1
+     1
+
+
+ans =
+
+     1     1     1     1     1
+     1     1     1     1     1
+     1     1     1     1     1
+     1     1     1     1     1
+     1     1     1     1     1
+
+
+ans =
+
+     0     0     0     0     0
+
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% q1 - EXPERIEMENT 
+
+% THIS ADDS A VECTOR AS SINGLE ROW, 
+%COMMAS INDICATE DIFFERENT ROW ELEMENTS
+x=[1,2,3]
+% THIS ADDS A VECTOR AS A SINGLE ROW AND TRANSPOSES IT SO THAT IT IS IN THE
+% FORM OF A SINGLE COLUMN
+y=[2,4,6]'
+% THIS ADDS A VECTOR AS A SINGLE COLUMN
+% COLONS INDICATE THE END OF A COLUMN
+z=[2;4;6]
+
+% MULTIPLICATION OF VECTORS IS NOT COMMUTATIVE 
+%(ORDER MATTERS)
+% THE RESULTING MATRIX HAS SAME ROWS AS FIRST MATRIX AND SAME NUMBER
+% COLUMNS AS SECOND MATRIX IN THE MULTIPLICATION
+x*y
+y*x
+% IF THE NUMBER OF COLUMNS OF FIRST MATRIX ARE NOT EQUAL TO NUMBER OF ROWS
+% OF SECOND MATRIX THEN THE MATRICES CANNOT BE MULTIPLIED
+% y*z
+
+% YOU CAN MULTIPLY MATRIX ELEMENTS BY ANOTHER MATRIX IF THEY ARE THE SAME
+% DIMENSIONS
+% x.*y
+x'.*y
+% x.*z
+y.*z
+% YOU CAN CALCULATE THE SUM OF ALL THE ELEMENTS OF A GIVEN MATRIX USING THE
+% SUM FUNCTION
+sum(x)
+% CALCULATE THE PRODUCT OF MATRIX ELEMENTS USING PROD()
+prod(y)
+
+% HERE IS A 3X3 MATRIX
+A=[1,2,3;4,5,6;1,3,2]
+% HERE IS ITS INVERSE
+B = A'
+% HERE IS IT MULTIPLIED BY Y :
+% 3 X 3 * (3 X 1) -> 3 X 1
+A*y
+% A MATRIX MULTIPLIED BY ITS INVERSE
+A*B
+
+% THE DETERMINANT OF A MATRIX CAN BE CALCULATED
+det(A)
+
+% MATRICES CAN BE INVERTED 
+% THIS IS MUCH SIMPLER USING A MATLAB COMMAND THAN BY HAND
+
+inv(B)
+
+% A MATRIX MULTIPLIED BY ITS INVERSE IS EQUAL TO THE IDENTITY MATRIX 
+% THE IDENTITY MATRIX IS ESSENTIAL "1" BUT IN MATRIX FORM
+B*inv(B)
+
+% In linear algebra, the trace of an n-by-n 
+%square matrix A is defined to be the sum of 
+%the elements on the main diagonal 
+%(the diagonal from the upper left to the lower right) of A
+trace(A)
+
+% A(i,j) gives the element in the ith row and the jth column
+A
+A(1,2)
+% using the colon gives all elements in a given row or column
+A(:,2)
+% more matrix slicing...
+A(2,2:3)
+% and re-ordering of matrix
+A([2,1,3],:)
+
+% A MULTIPLIED BY ITSELF
+A^2
+
+% EVERY ELEMENT IN A SQUARED INDIVIDUALLY
+A
+A.^2
+
+%SUM OF ELEMENTS IN INDIVIDUAL COLUMNS
+A
+sum(A,1)
+% AND IN INDIVIDUAL ROWS
+sum(A,2)
+
+% the same can be done for products
+prod(A,1)
+prod(A,2)
+
+%C is created from matrix A with an extra column added
+C=[A,z]
+
+% matrix of ones can be created
+ones(5,1)
+% or a square matrix
+ones(5)
+
+% matrix of zeros too
+zeros(1,5)
+
+%to clear all variables from workspace, use the clear command
+
+
+clear
+##### SOURCE END #####
+--></body></html>
