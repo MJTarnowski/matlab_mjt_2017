@@ -1,16 +1,17 @@
 %% exercise sheet 3 - ordinary differential equations
 
-%% Q1ai - y' = x^2 and y(0) = 1
-% 
-% function SolveSimple1()
-% [x,y] = ode45(@deriv,[0,10],1);
-% figure
-% plot(x,y,'b')
-% 
-% function dydx = deriv(x,y)
-% dydx = x^2;
-% end
-% 
+% Q1ai - y' = x^2 and y(0) = 1
+
+
+[x,y] = ode45(@deriv,[0,10],1);
+figure
+plot(x,y,'b')
+
+
+dydx = deriv(x,y)
+dydx = x^2;
+
+
 % function SolveSimple()
 % [x,t] = ode45(@deriv2,[0,10],1);
 % figure
@@ -98,23 +99,23 @@
 % function res = bvp4bc(ya,yb)
 % res = [ya(1) yb(2)]
 
-function solvebvp()
-
-bcfun = 
-
-
-sol = bvp4c(@deriv2a,@bcfun,solinit)
-
-    function dydt=deriv2a(t,y)
-    dydt = zeros(2,1);
-    dydt(1)=y(2);
-    dydt(2)=-3*y(2)+4*y(1);
-    end
-
-    function res=bcfun(ya,yb)
-    res = zeros(2,1);
-    res(1) = 1
-    res(2) = 1
-    end
-end
-%TBC
+% function solvebvp()
+% 
+% bcfun = 
+% 
+% 
+% sol = bvp4c(@deriv2a,@bcfun,solinit)
+% 
+%     function dydt=deriv2a(t,y)
+%     dydt = zeros(2,1);
+%     dydt(1)=y(2);
+%     dydt(2)=-3*y(2)+4*y(1);
+%     end
+% 
+%     function res=bcfun(ya,yb)
+%     res = zeros(2,1);
+%     res(1) = 1
+%     res(2) = 1
+%     end
+% end
+% %TBC
