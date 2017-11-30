@@ -1,0 +1,172 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Q2_i2_is_10</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-24"><meta name="DC.source" content="Q2_i2_is_10.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h2>Contents</h2><div><ul><li><a href="#1">collins toggle switch</a></li><li><a href="#2">Q2a</a></li><li><a href="#4">Q2b</a></li><li><a href="#6">derivative function for each protein</a></li></ul></div><h2>collins toggle switch<a name="1"></a></h2><pre class="codeinput"><span class="comment">% see this paper for details:</span>
+<span class="comment">% https://www.nature.com/articles/35002131.pdf</span>
+</pre><h2>Q2a<a name="2"></a></h2><pre class="codeinput"><span class="keyword">function</span> solve(p0)
+</pre><pre class="codeinput">trange = [0, 50];
+<span class="comment">%initial protein concentrations p1 and p2 as vector</span>
+<span class="comment">% p = [p1 p2]</span>
+p0 = [0 0];
+[t, p] = ode45(@derivp, trange, p0);
+
+<span class="comment">% plot change in concentration of each protein over time</span>
+plot(t,p)
+hold <span class="string">on</span>
+legend(<span class="string">'p1'</span>,<span class="string">'p2'</span>)
+xlabel(<span class="string">'time,t'</span>)
+ylabel(<span class="string">'protein concentration'</span>)
+title({<span class="string">'plot of change in protein concentrations'</span>,<span class="string">'for a collins toggle switch'</span>})
+</pre><img vspace="5" hspace="5" src="Q2_i2_is_10_01.png" alt=""> <h2>Q2b<a name="4"></a></h2><pre class="codeinput"><span class="comment">% Q 2b - *simulation with i1 = 0 and i2 = 10*</span>
+
+<span class="comment">%plot the phase plane</span>
+figure
+plot(p(:,1),p(:,2))
+hold <span class="string">on</span>
+legend(<span class="string">'phase plane'</span>)
+xlabel(<span class="string">'protein 1 concentration'</span>)
+ylabel(<span class="string">'protein 2 concentration'</span>)
+title({<span class="string">'phase plane'</span>,<span class="string">'comparing protein 1 and 2 concentrations'</span>,<span class="string">'i1 = 0 and i2 = 10'</span>})
+</pre><img vspace="5" hspace="5" src="Q2_i2_is_10_02.png" alt=""> <pre class="codeinput"><span class="keyword">end</span>
+</pre><h2>derivative function for each protein<a name="6"></a></h2><pre class="codeinput"><span class="keyword">function</span> dpdt = derivp(t,p)
+a1 = 3;
+a2 = 2.5;
+<span class="comment">% initial protein concetrations are required as input</span>
+<span class="comment">% p1 = ;</span>
+<span class="comment">% p2 = ;</span>
+i1 = 0;
+i2 = 10;
+b = 4;
+g = 4;
+
+dpdt = zeros(2,1);
+dpdt(1) = (a1/(1+((p(2)/1+i2)^b))) - p(1);
+dpdt(2) = (a2/(1+((p(1)/1+i1)^g))) - p(2);
+<span class="keyword">end</span>
+</pre><p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% collins toggle switch
+
+% see this paper for details:
+% https://www.nature.com/articles/35002131.pdf
+
+%% Q2a
+
+function solve(p0)
+trange = [0, 50];
+%initial protein concentrations p1 and p2 as vector
+% p = [p1 p2]
+p0 = [0 0];
+[t, p] = ode45(@derivp, trange, p0);
+
+% plot change in concentration of each protein over time
+plot(t,p)
+hold on
+legend('p1','p2')
+xlabel('time,t')
+ylabel('protein concentration')
+title({'plot of change in protein concentrations','for a collins toggle switch'})
+
+%% Q2b
+
+% Q 2b - *simulation with i1 = 0 and i2 = 10*
+
+%plot the phase plane
+figure
+plot(p(:,1),p(:,2))
+hold on
+legend('phase plane')
+xlabel('protein 1 concentration')
+ylabel('protein 2 concentration')
+title({'phase plane','comparing protein 1 and 2 concentrations','i1 = 0 and i2 = 10'})
+
+end
+
+%% derivative function for each protein
+
+function dpdt = derivp(t,p)
+a1 = 3;
+a2 = 2.5;
+% initial protein concetrations are required as input
+% p1 = ;
+% p2 = ;
+i1 = 0;
+i2 = 10;
+b = 4;
+g = 4;
+
+dpdt = zeros(2,1);
+dpdt(1) = (a1/(1+((p(2)/1+i2)^b))) - p(1);
+dpdt(2) = (a2/(1+((p(1)/1+i1)^g))) - p(2);
+end
+
+
+
+
+##### SOURCE END #####
+--></body></html>

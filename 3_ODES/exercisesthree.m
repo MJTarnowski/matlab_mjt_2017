@@ -3,13 +3,17 @@
 % Q1ai - y' = x^2 and y(0) = 1
 
 
-[x,y] = ode45(@deriv,[0,10],1);
-figure
-plot(x,y,'b')
 
+% function solve()
+% [x,y] = ode45(@deriv,[0,10],1);
+% figure
+% plot(x,y,'b')
+% end
+% 
+% function dydx = deriv(x,y)
+% dydx = x^2;
+% end
 
-dydx = deriv(x,y)
-dydx = x^2;
 
 
 % function SolveSimple()
@@ -62,20 +66,20 @@ dydx = x^2;
 % end
 %% Q 1av
 
-% function Solvesimple()
-% trange=[0,10];
-% yinitial=[1,0]
-% [t,y]=ode45(@deriv3, trange, yinitial);
-% 
-% plot(t,y)
-% end
-% 
-% function dydt=deriv3(t,y)
-% dydt = zeros(2,1);
-% dydt(1)=y(2);
-% dydt(2)=-3*y(2)+4*y(1);
-% 
-% end
+function Solvesimple()
+trange=[0,10];
+yinitial=[1,1];
+[t,y]=ode45(@deriv3, trange, yinitial);
+
+plot(t,y)
+end
+
+function dydt=deriv3(t,y)
+dydt = zeros(2,1);
+dydt(1)=y(2);
+dydt(2)=-3*y(2)+4*y(1);
+
+end
 
 
 %% Q2 - boundary value problems

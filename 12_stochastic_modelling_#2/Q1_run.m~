@@ -1,0 +1,11 @@
+%% code to run Q1
+
+S = [1,0,-1,0; 0,1,0,-1];
+n_0 = [5 1]
+
+% create a grid between 0 and T_f with N_t points
+t_i = linspace(0, T_f, N_t)';
+x_1i = zeros(N_sim, length(t_i));
+x_2i = zeros(N_sim, length(t_i));
+
+parfor

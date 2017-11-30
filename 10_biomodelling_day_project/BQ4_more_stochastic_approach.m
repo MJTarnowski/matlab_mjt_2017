@@ -77,11 +77,11 @@ x(i,:) = x_cur;
 t(i) = T_f;
 t = t(:);
 
-%now plot the results on a graph
-plot(t,x(:,:))
-xlabel('time')
-ylabel('number of molecules')
-legend('X1','X2','X3','X4')
+% %now plot the results on a graph
+% plot(t,x(:,:))
+% xlabel('time')
+% ylabel('number of molecules')
+% legend('X1','X2','X3','X4')
 
 end
 

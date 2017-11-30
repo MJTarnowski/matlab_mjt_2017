@@ -1,0 +1,192 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>exercise 1</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2017-11-27"><meta name="DC.source" content="Exercise_1.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; } 
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>exercise 1</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">a. how	 many	 input/output	 parameters	RunAndVisualiseMonodomainSimulation takes</a></li><li><a href="#2">ex1 qb</a></li></ul></div><h2>a. how	 many	 input/output	 parameters	RunAndVisualiseMonodomainSimulation takes<a name="1"></a></h2><pre class="codeinput"><span class="comment">% the function RunAndVisualiseMonodomainSimulation has:</span>
+
+<span class="comment">% 2 output parameters:  [ finalVoltage, conductionVelocities ]</span>
+
+<span class="comment">% 5 input parameters: (numberCells,</span>
+<span class="comment">%                    simulationDuration,</span>
+<span class="comment">%                    leftFibreHalfconductivity,</span>
+<span class="comment">%                    rightFibreHalfconductivity,</span>
+<span class="comment">%                    visualiseSimulation)</span>
+
+<span class="comment">% definitions of parameters:</span>
+<span class="comment">%</span>
+
+<span class="comment">% outputs:</span>
+<span class="comment">% finalVoltage - transmembrane potential accross the domain</span>
+<span class="comment">%  at the end of the simulation</span>
+<span class="comment">% conductionVelocities - a vector</span>
+<span class="comment">%  with the conduction velocity computed at each end of the fibre</span>
+
+<span class="comment">% inputs:</span>
+<span class="comment">% numberCells, number of cells in simulation</span>
+<span class="comment">% simulationDuration, how long the simulation will be run for</span>
+<span class="comment">% leftFibreHalfconductivity,conductivities used in the left and right half of the fibre, respectively.</span>
+<span class="comment">% rightFibreHalfconductivity,conductivities used in the left and right half of the fibre, respectively.</span>
+<span class="comment">% visualiseSimulation - If visualiseSimulation is true, the evolution of the</span>
+<span class="comment">%  transmembrane potential throughout the simulation is plotted, as well as</span>
+<span class="comment">%  the action potential shape at both ends of the fibre.</span>
+</pre><h2>ex1 qb<a name="2"></a></h2><pre class="codeinput">RunAndVisualiseMonodomainSimulation(50,15,1.4,1.4,true)
+</pre><pre class="codeoutput">
+ans =
+
+   14.1286
+   13.7672
+   12.7587
+   11.3222
+    9.7449
+    8.2662
+    7.0207
+    6.0438
+    5.3077
+    4.7600
+    4.3495
+    4.0370
+    3.7968
+    3.6137
+    3.4789
+    3.3877
+    3.3369
+    3.3241
+    3.3465
+    3.4002
+    3.4799
+    3.5772
+    3.6805
+    3.7735
+    3.8341
+    3.8341
+    3.7735
+    3.6805
+    3.5772
+    3.4799
+    3.4002
+    3.3465
+    3.3241
+    3.3369
+    3.3877
+    3.4789
+    3.6137
+    3.7968
+    4.0370
+    4.3495
+    4.7600
+    5.3077
+    6.0438
+    7.0207
+    8.2662
+    9.7449
+   11.3222
+   12.7587
+   13.7672
+   14.1286
+
+</pre><img vspace="5" hspace="5" src="Exercise_1_01.png" alt=""> <img vspace="5" hspace="5" src="Exercise_1_02.png" alt=""> <img vspace="5" hspace="5" src="Exercise_1_03.png" alt=""> <p class="footer"><br><a href="http://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2016a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% exercise 1
+
+
+%% a. how	 many	 input/output	 parameters	RunAndVisualiseMonodomainSimulation takes
+
+% the function RunAndVisualiseMonodomainSimulation has:
+
+% 2 output parameters:  [ finalVoltage, conductionVelocities ]
+
+% 5 input parameters: (numberCells,
+%                    simulationDuration,
+%                    leftFibreHalfconductivity,
+%                    rightFibreHalfconductivity,
+%                    visualiseSimulation)
+
+% definitions of parameters:
+% 
+
+% outputs: 
+% finalVoltage - transmembrane potential accross the domain
+%  at the end of the simulation
+% conductionVelocities - a vector
+%  with the conduction velocity computed at each end of the fibre
+
+% inputs: 
+% numberCells, number of cells in simulation
+% simulationDuration, how long the simulation will be run for
+% leftFibreHalfconductivity,conductivities used in the left and right half of the fibre, respectively.
+% rightFibreHalfconductivity,conductivities used in the left and right half of the fibre, respectively.
+% visualiseSimulation - If visualiseSimulation is true, the evolution of the
+%  transmembrane potential throughout the simulation is plotted, as well as
+%  the action potential shape at both ends of the fibre.
+
+%% ex1 qb
+
+RunAndVisualiseMonodomainSimulation(50,15,1.4,1.4,true)
+
+
+##### SOURCE END #####
+--></body></html>
